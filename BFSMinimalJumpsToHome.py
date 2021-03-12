@@ -5,9 +5,8 @@ class MinimalJumpsToHome: #https://leetcode.com/problems/minimum-jumps-to-reach-
         queue = deque([(0,True,0)]) #queue[0]:curPosition;#queue[1]:ifcanmoveBack; queque[2]:steps
         history= {(0, True)}
         while queue:
-            # print(f"curqueue:{queue}")
             cur = queue.popleft()
-            # print(f"curState: {cur}",end=" ")
+
             if cur[0] + a == x or (cur[1] and cur[0] - b == x):
                 return cur[2]+1
 
