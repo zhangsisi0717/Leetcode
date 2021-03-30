@@ -7,25 +7,38 @@ https://www.techiedelight.com/longest-common-subsequence/
     if end with different element:
         LCS(A[1,2..m],B[1,2,3...n]) = longer one of (LCS(A[1,2,3...m-1],B[1,2,3...n]), LCS(A[1,2,3...m], B[1,2,3...n-1]))
 """
-def LCS(StringA,StringB,idxA,idxB): ####recursion
-    if idxA==-1 or idxB ==-1:
-        return 0,[None]
+def longestCommonSubsequence(stringA,stringB):
+    visited = dict()
+    def LCS2(stringA,stringB,idxA,idxB,visited): ####recursion
+        if(idxA,idxB) in visited:
+            return visited[(idxA,idxB)]
+        if idxA==-1 or idxB ==-1:
+            return 0,[None]
 
-    if StringA[idxA] == StringB[idxB]:
-        length,sub = LCS(StringA,StringB,idxA-1,idxB-1)
-        if length:
-            return length+1,[i+StringA[idxA] for i in sub]
+        if stringA[idxA] == stringB[idxB]:
+            re = LCS2(stringA,stringB,idxA-1,idxB-1,visited)
+            if re[0]:
+                visited[(idxA,idxB)] =(re[0]+1,[i+stringA[idxA] for i in re[1]])
+            else:
+                visited[(idxA,idxB)] = (1,[stringA[idxA]])
+            return visited[(idxA,idxB)]
+
+        re1 = LCS2(stringA,stringB,idxA-1,idxB,visited)
+        re2 = LCS2(stringA,stringB,idxA,idxB-1,visited)
+        if re1[0]>re2[0]:
+            visited[(idxA,idxB)] = re1
+
+        elif re1[0]==re2[0] and re1[1]!= re2[1]:
+            visited[(idxA,idxB)] = (re1[0],re1[1]+re2[1])
+
         else:
-            return 1,[StringA[idxA]]
-    else:
-        length1, sub1 = LCS(StringA,StringB,idxA-1,idxB)
-        length2, sub2 = LCS(StringA,StringB,idxA,idxB-1)
-        if length1>length2:
-            return length1,sub1
-        elif length1 == length2:
-            return length1,sub1 + sub2
-        else:
-            return length2,sub2
+            visited[(idxA,idxB)] =  re2
+        return visited[(idxA,idxB)]
+    return LCS2(stringA,stringB,len(stringA)-1,len(stringB)-1,visited)
+
+testS1 = "BECFDG"
+testS2 = "BCDEFG"
+longestCommonSubsequence(testS1,testS2)
 
 
 def LCSBottomUp(stringA,stringB):
@@ -65,4 +78,5 @@ X = "MZJAWXU"
 Y = "XMJYAUZ"
 LCSBottomUp(stringA,stringB)
 
-LCS(stringA,stringB,len(stringA)-1,len(stringB)-1)
+
+
