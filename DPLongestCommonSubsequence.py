@@ -74,9 +74,9 @@ def LCSBottomUp(stringA,stringB):
 stringA = "ABCBDAB"
 stringB = "BDCABA"
 
-X = "MZJAWXU"
-Y = "XMJYAUZ"
+X = "XMJYAUZ"
+Y = "XMJAATZ"
 LCSBottomUp(stringA,stringB)
 
 
-
+longestCommonSubsequence(X,Y)
