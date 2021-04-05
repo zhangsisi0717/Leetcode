@@ -56,10 +56,5 @@ class WordDictionary:
 
         return True
 
-w = WordDictionary()
-w.addWord("sisi")
-w.addWord("sisy")
-w.addWord("sasy")
-
 
 
