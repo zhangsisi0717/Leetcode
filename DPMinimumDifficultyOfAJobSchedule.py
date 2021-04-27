@@ -1,4 +1,5 @@
 """
+https://leetcode.com/problems/minimum-difficulty-of-a-job-schedule/
 explaination:
  dp(idx, days_left) == min( dp(j+1,days_left -1 ) j->(idx to n - days_left + 1) ) + maximum difficulty between index(i,j) if finish job i->j
  in one single day.
