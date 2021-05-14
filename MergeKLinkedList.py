@@ -1,7 +1,36 @@
 from type_checking import *
 import  heapq
-#https://leetcode.com/problems/merge-k-sorted-lists/
+
+###https://leetcode.com/problems/merge-two-sorted-lists/
 """
+Only merge two sorted lists
+!!If only need to merge two sorted list, just use two index i,j ,we do not need use heap!!
+a = None
+b = 1
+then a or b return 1
+if a,b = None,None => a or b return None
+
+"""
+class Solution:
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        head = ListNode()
+        cur = head
+
+        while l1 and l2:
+            if l1.val <= l2.val:
+                cur.next = l1
+                l1 = l1.next
+            else:
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+
+        cur.next = l1 or l2
+        return head.next
+
+"""
+#https://leetcode.com/problems/merge-k-sorted-lists/  Merge K lists!!!!!!
+
 Explanination: 
 use heap to implement merging K linked lists
 [[1,4,5],[1,3,4],[2,6]]
