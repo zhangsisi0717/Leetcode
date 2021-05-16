@@ -1,7 +1,65 @@
 ##https://leetcode.com/problems/basic-calculator-ii/
+from type_checking import *
+from collections import deque
+def calculate_stack(s: str) -> int:
+    """
+    Using a stack
+       (+)5+6*2/4-5/2*6
+    temp_string = ""
+    stack = []
+    is s is a number, then:
+        temp_string += s (we have not finished reading this number)
+
+    if s is in "+-*/", then we have finished reading this number, call operate(stack, presign, number) method
+        if presign is "+", append number to stack directly
+        if presign is "-", apppend (-1)*number to stack
+        if presign is "*", topNumber = stack.pop(), then append (topNumber * number)
+        if presign is "/", topNumber = stack.pop(), then append (topNumber / number)
+
+    eventually sum the stack
+    """
+    def operate(stack,presign,num):
+        if presign == "+":
+            stack.append(num)
+
+        elif presign == "-":
+            stack.append(-num)
+
+        elif presign == "*":
+            stack.append(stack.pop()*num)
+
+        elif presign == "/":
+            stack.append(int(stack.pop()/num))
+
+    s = s.strip()
+    temp_num = ""
+    presign = "+"
+    stack = deque([])
+    for i in range(len(s)):
+        if i == len(s)-1:
+            temp_num += s[i]
+            operate(stack,presign,int(temp_num))
+
+        elif i < len(s)-1 and s[i].isnumeric():
+            temp_num += s[i]
+
+        elif i < len(s)-1  and s[i] in "+-*/":
+            operate(stack,presign,int(temp_num))
+            temp_num = ""
+            presign = s[i]
+
+    return sum(stack)
 
 
-class Solution:
+s= "3+2*2/4+7*9/2-6*5*5/4"
+calculate_stack(s)
+
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+#################################################################################################################
+
+class SolutionTwo:
     """
     s = " 3 + 5*2/6 - 7*8/2"
     Recursion (s):
