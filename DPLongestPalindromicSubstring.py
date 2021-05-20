@@ -6,6 +6,30 @@ def lpSubstringBottomUp(string):
     4.If string[i] == string[j] and table[i+1][j-1]>0, then table[i][j] = table[i+1][j-1]+2
 
     """
+
+    """
+    https://leetcode.com/problems/longest-palindromic-substring/solution/
+    Another faster way is to enumerate all possible center(a,b) and expand the interval gradually such as (a-1,b+1),(a-2,
+    b+2), once s[a] != s[b], just stop. This would be faster when the longest palindromic ==1
+    
+    def longestPalindrome(self, s: str) -> str:
+        n = len(s)
+        p, q = 0, 1
+        longest = 1
+        center = [(x, x) for x in range(n)] + [(x, x+1) for x in range(n-1)]
+        for (a, b) in center:
+            i, j = a, b
+            while i >= 0 and j < n and s[i] == s[j]:
+                i, j = i-1, j+1
+            i, j = i+1, j-1
+            if j - i + 1 > longest:
+                longest = j - i + 1
+                p, q = i, j+1
+                
+        return s[p:q]
+    
+    """
+##https://leetcode.com/problems/longest-palindromic-substring/
     curLargest=0
     curPrefix=set()
     table =[[1 if i==j else 0 for i in range(len(string))]for j in range(len(string))]
