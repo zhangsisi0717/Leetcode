@@ -1,4 +1,5 @@
 #https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/fu
+#https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/fu
 def removeDuplicates(self, s: str, k: int) -> str:
     string = s
     change = True
