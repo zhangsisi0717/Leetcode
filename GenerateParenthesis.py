@@ -1,6 +1,7 @@
 from collections import deque
+#https://leetcode.com/problems/generate-parentheses/
 """
-
+Approach 1: Brute force
 Enumerate all the possible cadidates by using recursion, then check them one by one if they are valid
 time complexity: recursion step : (2n)!/(n!*n!)
                 then you have to check if each of them is valid, so total => 2n * (2n)!/(n!*n!)
@@ -33,6 +34,27 @@ def generateParenthesis(n):
 
     return [s for s in all_candi if isValid(s)]
 
-re = dfs(4,4)
+"""
+Approach 2:
+n
+Σ Aj-1 * An-j = An
+j=1
 
-s = "()()())()"
+A valid parenthesis combination must be "(" + valid_paren<j-1 pairs of parenthesis> + ")" + valid_paren<n-j pairs of parenthesis
+
+"""
+from functools import cache
+def generateParenthesis2(n):
+
+    @cache
+    def recur(n):
+        if n == 0:
+            return [""]
+        else:
+            res = []
+            for j in range(1, n+1):
+                res += ["(" + x + ")" + y for x in recur(j-1) for y in recur(n-j)]
+
+            return res
+
+    return recur(n)
