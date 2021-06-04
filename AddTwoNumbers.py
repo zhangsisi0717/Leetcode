@@ -44,3 +44,33 @@ class Solution:
 
         tail.next = ListNode(val=1) if add ==1  else None
         return head
+
+
+##https://leetcode.com/problems/add-two-numbers-ii/ reversed order
+"""
+if the order is reversed, either change its order to make the least significant digit to be the first one, 
+or copy the orginal value
+"""
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        l1_list,l2_list,new_list = [],[],[]
+        while(l1 or l2):
+            if l1:
+                l1_list.append(l1.val)
+                l1 = l1.next
+            if l2:
+                l2_list.append(l2.val)
+                l2 = l2.next
+        i,j=len(l1_list)-1,len(l2_list)-1
+        add = 0
+        prev_node = None
+        while(i>=0 or j>=0):
+            l1_val = l1_list[i] if i>=0 else 0
+            l2_val = l2_list[j] if j>=0 else 0
+            temp_sum = (l1_val + l2_val + add) % 10
+            add = (l1_val + l2_val + add) // 10
+            cur_node = ListNode(val=temp_sum,next=prev_node)
+            prev_node = cur_node
+            i-=1
+            j-=1
+        return ListNode(val=1,next=prev_node) if add ==1 else cur_node
