@@ -1,6 +1,48 @@
 from collections import Counter
+
+
 """
-p
+TWO Pointer method
+step1: sort the nums
+step2: implement twoSum
+step3: for i in range(n)
+            for j in range(i+1,n):
+                if found twoSum, then add to the final result
+
+timeComplexity O(n3)
+"""
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        sort_nums = sorted(nums)
+        def twoSum(lb,ub,target):
+            re =[]
+            while(lb<ub):
+                if sort_nums[lb] + sort_nums[ub] >target:
+                    ub -=1
+
+                elif sort_nums[lb] + sort_nums[ub] <target:
+                    lb +=1
+
+                else:
+                    re.append([sort_nums[lb],sort_nums[ub]])
+                    ub -= 1
+                    lb +=1
+            return re
+        final_set = set()
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                temp = twoSum(j+1,len(nums)-1,target-sort_nums[i]-sort_nums[j])
+                for c in temp:
+                    new_temp = tuple([sort_nums[i],sort_nums[j]] + c)
+                    final_set.add(new_temp)
+
+        return list(final_set)
+
+
+
+
+"""
+this approach is similar to DP_CoinChange
 """
 def fourSum(nums, target):
     num_to_count = Counter(nums)
@@ -11,9 +53,7 @@ def fourSum(nums, target):
     def sumToIdx(idx, target, num_left, num_count):
         print(f"idx = {idx}, target = {target},num_left = {num_left},num_count = {num_count}")
         if idx == 0:
-            return [num_left*[unique_num[0]]] if num_count[0]>=num_left and num_count[0]*num_left == target else False
-        # if target<0: return False
-        # if target == 0: return []
+            return [num_left*[unique_num[0]]] if num_count[0]>=num_left and unique_num[0]*num_left == target else False
         if num_left<=0 and target !=0: return False
         if num_left == 0 and target == 0: return [[]]
         ub = min(num_left, num_count[idx])
@@ -31,37 +71,3 @@ def fourSum(nums, target):
         return re if re else False
 
     return sumToIdx(len(unique_num)-1, target, 4, num_count)
-
-nums = [1,0,-1,0,-2,2]
-# nums = [1,-1,-2,2]
-target = 0
-fourSum(nums, target)
-
-
-"""
-brute force solution
-"""
-def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
-    sort_nums = sorted(nums)
-    def twoSum(lb,ub,target):
-        re =[]
-        while(lb<ub):
-            if sort_nums[lb] + sort_nums[ub] >target:
-                ub -=1
-
-            elif sort_nums[lb] + sort_nums[ub] <target:
-                lb +=1
-
-            else:
-                re.append([sort_nums[lb],sort_nums[ub]])
-                ub -= 1
-                lb +=1
-        return re
-    final = []
-    for i in range(len(nums)):
-        for j in range(i+1,len(nums)):
-            temp = twoSum(j+1,len(nums)-1,target-sort_nums[i]-sort_nums[j])
-            four_sum = [[sort_nums[i],sort_nums[j]] + k for k in temp] if temp else []
-            final += four_sum
-
-    return final
