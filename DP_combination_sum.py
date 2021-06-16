@@ -1,5 +1,13 @@
 ##https://leetcode.com/problems/combination-sum/
 from functools import cache
+"""
+complexity analysis:
+this algorithm is like a DFS traversal in a n-ary tree. so the total number of steps during this would be the number of nodes in the tree
+let M be the minimal value among the candidates
+maximal depth of the tree: T/M
+maximal number of nodes in N-ary tree of T/M == N**[(T/M)+1]
+so the time complexity would be O(N**[(T/M)+1])
+"""
 def combinationSum(candidates, target):
     @cache
     def combi(target):
