@@ -4,11 +4,16 @@ https://www.techiedelight.com/longest-common-subsequence/
     if end with the same element:
         LCS(A[1,2..m],B[1,2,3...n]) = LCS(A[1,2,3...m-1],B[1,2,3...n-1]) + A[m]/B[n]
 
+        lcs(i,j) = lcs(i-1,j-1) + A[i]/A[j] (i,j is the surffix)
+
     if end with different element:
         LCS(A[1,2..m],B[1,2,3...n]) = longer one of (LCS(A[1,2,3...m-1],B[1,2,3...n]), LCS(A[1,2,3...m], B[1,2,3...n-1]))
+
+        lcs(i,j) = max (lcs(i-1,j), lcs(i, j-1) )  (i,j is the surffix)
+
 """
 def longestCommonSubsequence(stringA,stringB):
-    visited = dict()
+    visited = dict() ##memoization
     def LCS2(stringA,stringB,idxA,idxB,visited): ####recursion
         if(idxA,idxB) in visited:
             return visited[(idxA,idxB)]
