@@ -1,5 +1,5 @@
 ##https://leetcode.com/problems/design-browser-history/
-##double linked list
+##double linked list to simulate the browser history
 class Node:
     def __init__(self,val=None,prev=None,next_v=None):
         self.val = val
