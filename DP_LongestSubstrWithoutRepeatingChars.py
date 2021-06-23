@@ -4,7 +4,7 @@ def lengthOfLongestSubstring(s: str) -> int:
     letter_to_idx = dict()
     longest = 0
     cur_start_end = [0,-1]
-    cur_length=0
+    cur_length=0 ##current means longest substring ending at index i
     cur_set = set()
     for i in range(len(s)):
         print(f"cur_stirng = {s[cur_start_end[0]:int(cur_start_end[1]+1)]}")
