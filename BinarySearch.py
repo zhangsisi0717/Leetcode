@@ -1,5 +1,6 @@
 from bisect import bisect_left
 from collections import deque
+from typing import List
 a = deque([2.5, 3, 6, 77, 334, 777])
 bisect_left(a,2.6)
 a.insert(1,2.6)
@@ -28,6 +29,7 @@ class Solution:
 ##https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
 """
 bisect_left and biset_right implementations
+find the first and last index of target element
 """
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
