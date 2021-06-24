@@ -5,6 +5,7 @@ import copy
 from collections import deque
 from bisect import bisect_right
 import copy
+#https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/
 """
 s = "abpcplea"
 dictionary = ["ale","apple","monkey","plea"]
