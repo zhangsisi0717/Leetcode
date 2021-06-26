@@ -11,6 +11,14 @@ if we choose current i, then we find the index of next event whose starting date
 if not choose current i: max_val_not_choose = subMax(i+1,k)
 
 return max(max_val_choose,max_val_not_choose)
+
+time complexity:
+
+    with out memoization, brute force search: (2**k) * lg(n)
+    
+    with memoization, dynamic programming: equals to fill a k*n table, so the complexity is (k*n), however 
+    in order to find the next index, we use binary search, lg(n)
+    so total compexity == (k*n) * lg(n)
 """
 
 
