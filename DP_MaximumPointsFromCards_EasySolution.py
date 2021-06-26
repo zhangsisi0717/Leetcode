@@ -2,7 +2,8 @@
 from typing import List
 """
 purpose: each time, choose from start or end, return max points we can get
-in this question, if we do need to iterate all the paths => 2**K complexity
+in this question, if we do need to iterate all the paths => 2^K complexity
+          
 """
 
 """
@@ -38,3 +39,11 @@ def maxScore(cardPoints: List[int], k: int) -> int:
 
     return max_val
 
+"""
+DO not use recursion:  
+this way Time complexity O(2^k)    
+        def subMaxScore(i,j,k):
+            if k<=0 or i>j:
+                return 0
+            return max(cardPoints[i]+subMaxScore(i+1,j,k-1),cardPoints[j]+subMaxScore(i,j-1,k-1))
+"""
