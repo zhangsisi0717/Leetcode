@@ -1,6 +1,9 @@
 #https://leetcode.com/problems/reorganize-string/
 from collections import Counter
 from collections import deque
+"""
+insert the 
+"""
 class Solution:
     def reorganizeString(self, S: str) -> str:
         count = Counter(S)

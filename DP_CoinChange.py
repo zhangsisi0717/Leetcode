@@ -1,11 +1,11 @@
 from type_checking import *
+from functools import cache
 #https://leetcode.com/problems/coin-change/
 """
 purpose: smallest number to make up to certain amount
 f(x) returns smallest number of coins to make up to amount "x"
    f(x) => min( 1+f(x-C0), 1+f(x-C1), 1+f(x-C2), .....1+f(x-C3))
 """
-from functools import cache
 import math
 def coinChange(coins: List[int], amount: int) -> int:
     @cache

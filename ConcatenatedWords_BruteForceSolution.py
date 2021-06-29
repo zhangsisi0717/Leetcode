@@ -24,6 +24,7 @@ def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
                 return True
 
         return False
+
     re = []
     wordSet = []
     for idx in range(len(words)):

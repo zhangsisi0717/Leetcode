@@ -2,6 +2,7 @@
 from typing import List
 from functools import cache
 """
+smallest jumps reach to last index
 f(idx) return smallest jumps to reach to last index starting from postion idx
 nums = [2,3,1,1,4]
 f(idx) == min[1+f(idx+1), 1+f(idx+2)....1+f(idx+i))]  =>  i == nums[idx]

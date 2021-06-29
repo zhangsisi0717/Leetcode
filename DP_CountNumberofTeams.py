@@ -25,3 +25,4 @@ def numTeams(rating: List[int]) -> int:
 
 ratings = [72, 66, 17, 80, 50, 16, 98, 84]
 numTeams(ratings)
+

@@ -1,4 +1,4 @@
-a=[-1,-3,10,1,-1,-1,3]
+a=[-1,3,10,1,-1,-1,3]
 
 ##DP solution: maxsum ending at index i == max_sum ending at index i-1 + array[i] (if sum_ending_at index[i-1] + array[i] > array[i])
 ##             maxsum ending at index i == array[i] (else: sum_ending_at index[i-1] + array[i] <= array[i] )
