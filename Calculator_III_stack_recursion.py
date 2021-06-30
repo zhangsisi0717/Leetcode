@@ -21,12 +21,11 @@ def calculate_stack(s: str) -> int:
 
     eventually sum the stack
     """
-    s = s + "+"
-    #!!!!!!we need to add a new operator  + to the end of string, in case the ending string is ")", under that circumstance, it will not
-    # operate the previous operations
-    def operate(stack,presign,num):
 
-        ### better way is operator = {"+":lambda x,y:x+y,"-":lambda x,y:x-y,"*":lambda x,y:x*y,"/":lambda x,y: int(x/y)}##
+    #!!!!!!we need to add a new operator  "+" to the end of string, in case the ending string is ")", under that circumstance, it will not
+    # operate the previous operations
+    s = s + "+"
+    def operate(stack,presign,num):
         if presign == "+":
             stack.append(num)
 
@@ -39,8 +38,7 @@ def calculate_stack(s: str) -> int:
         elif presign == "/":
             stack.append(int(stack.pop()/num))
 
-
-    def recursion(idx): ##return the result starting from index i
+    def recursion(idx): ##return the result,and index of ")" starting from index i
         stack = []
         temp_num = ""
         presign ="+"
@@ -52,14 +50,10 @@ def calculate_stack(s: str) -> int:
                 operate(stack,presign,int(temp_num))
                 return sum(stack),idx
 
-            elif idx == len(s)-1 and s[idx].isnumeric():
-                temp_num += s[idx]
-                operate(stack,presign,int(temp_num))
-
-            elif idx < len(s)-1 and s[idx].isnumeric():
+            elif s[idx].isnumeric():
                 temp_num += s[idx]
 
-            elif idx < len(s) and s[idx] in "+-*/":
+            elif s[idx] in "+-*/":
                 operate(stack,presign,int(temp_num))
                 temp_num = ""
                 presign = s[idx]
@@ -68,7 +62,8 @@ def calculate_stack(s: str) -> int:
 
         return sum(stack),idx
 
-    return recursion(0)
+    return recursion(0)[0]
+
 
 s = "2*(5+5*2)/3+(6/2+8)"
 # s = "2*(5+5*2)/3"
