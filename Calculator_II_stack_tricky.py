@@ -5,10 +5,12 @@ def calculate_stack(s: str) -> int:
     """
     Using a stack
        (+)5+6*2/4-5/2*6
-    temp_string = ""
+    temp_num = ""
+    pre_sign = "+", pre_sign starts with "+"
     stack = []
-    is s is a number, then:
-        temp_string += s (we have not finished reading this number)
+    iterate the whole string from start to end,
+    if s is a number, then:
+        temp_num += s (we have not finished reading this number)
 
     if s is in "+-*/", then we have finished reading this number, call operate(stack, presign, number) method
         if presign is "+", append number to stack directly
@@ -16,6 +18,7 @@ def calculate_stack(s: str) -> int:
         if presign is "*", topNumber = stack.pop(), then append (topNumber * number)
         if presign is "/", topNumber = stack.pop(), then append (topNumber / number)
 
+    "DO NOT FORGET TO ADD A "+" TO END OF THE STRING IN THE FIRST PLACE, in order to calculate the last number"
     eventually sum the stack
     """
     def operate(stack,presign,num):
