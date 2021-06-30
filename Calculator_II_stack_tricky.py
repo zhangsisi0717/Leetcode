@@ -21,38 +21,36 @@ def calculate_stack(s: str) -> int:
     "DO NOT FORGET TO ADD A "+" TO END OF THE STRING IN THE FIRST PLACE, in order to calculate the last number"
     eventually sum the stack
     """
-    def operate(stack,presign,num):
-        if presign == "+":
-            stack.append(num)
+    s = s+"+"
+    operator = {"*":lambda x,y:x*y,"/":lambda x,y: int(x/y)}
+    pre_sign = "+"
+    idx=0
+    stack=deque([])
+    cur_num = ""
+    while(idx<len(s)):
+        if s[idx] == " ":
+            idx +=1
+            continue
 
-        elif presign == "-":
-            stack.append(-num)
+        if s[idx].isnumeric():
+            cur_num += s[idx]
 
-        elif presign == "*":
-            stack.append(stack.pop()*num)
+        else:
+            if pre_sign=="+":
+                stack.append(int(cur_num))
+            elif pre_sign=="-":
+                stack.append((-1)*int(cur_num))
 
-        elif presign == "/":
-            stack.append(int(stack.pop()/num))
+            elif pre_sign in ("*/"):
+                x = stack.pop()
+                stack.append(operator[pre_sign](x, int(cur_num)))
 
-    s = s.strip()
-    temp_num = ""
-    presign = "+"
-    stack = deque([])
-    for i in range(len(s)):
-        if i == len(s)-1:
-            temp_num += s[i]
-            operate(stack,presign,int(temp_num))
+            pre_sign = s[idx]
+            cur_num=""
 
-        elif i < len(s)-1 and s[i].isnumeric():
-            temp_num += s[i]
-
-        elif i < len(s)-1  and s[i] in "+-*/":
-            operate(stack,presign,int(temp_num))
-            temp_num = ""
-            presign = s[i]
+        idx +=1
 
     return sum(stack)
-
 
 s= "3+2*2/4+7*9/2-6*5*5/4"
 calculate_stack(s)

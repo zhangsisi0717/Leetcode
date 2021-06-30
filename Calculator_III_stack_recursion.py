@@ -25,6 +25,8 @@ def calculate_stack(s: str) -> int:
     #!!!!!!we need to add a new operator  + to the end of string, in case the ending string is ")", under that circumstance, it will not
     # operate the previous operations
     def operate(stack,presign,num):
+
+        ### better way is operator = {"+":lambda x,y:x+y,"-":lambda x,y:x-y,"*":lambda x,y:x*y,"/":lambda x,y: int(x/y)}##
         if presign == "+":
             stack.append(num)
 
