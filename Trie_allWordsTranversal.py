@@ -1,4 +1,5 @@
 from typing import List
+import copy
 products = ["bags","baggage","banner","box","cloths"]
 """
 create a the trie first (only with "end")
