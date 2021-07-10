@@ -12,7 +12,7 @@ step 2: for a sorted array, each move we have two choice,
         2. make the largest become smaller, somewhere between (min, second_max) , popout the larget value in array
 minDiff(leftstep) return mindifference we can get given number of leftstep
 
-
+Time complexity = O(2**(n+1)-1) n is the number of steps
 """
 def minDifference(nums: List[int]) -> int:
     num_queue = deque(sorted(nums))
