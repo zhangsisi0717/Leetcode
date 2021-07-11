@@ -15,7 +15,7 @@ class Solution:
         lb,ub = 0,len(nums)-1
         if target > nums[-1] or target < nums[0]:return -1
         while(lb<=ub):
-            mid = lb + (ub-lb) // 2
+            mid = (ub+lb) // 2
             if nums[mid] == target:
                 return mid
             elif nums[mid] > target:
