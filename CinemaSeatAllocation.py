@@ -1,5 +1,5 @@
 #https://leetcode.com/problems/cinema-seat-allocation/
-def maxNumberOfFamilies(n: int, reservedSeats: List[List[int]]) -> int:
+from typing import List
 """
 IF {2,3,4,5} WORK:
     result +=1
@@ -7,6 +7,8 @@ IF {2,3,4,5} WORK:
 ELIF {4,5,6,7} WORK, then result +=1
 ELIF {6,7,8,9} WORK, then result +=1
 """
+def maxNumberOfFamilies(n: int, reservedSeats: List[List[int]]) -> int:
+
     row_to_seats = dict()
     for i in reservedSeats:
         if i[0] in row_to_seats:
@@ -28,4 +30,5 @@ ELIF {6,7,8,9} WORK, then result +=1
             count +=1
 
         total += count
+
     return total + (n-len(row_to_seats))*2
