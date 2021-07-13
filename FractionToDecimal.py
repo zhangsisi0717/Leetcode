@@ -1,41 +1,73 @@
-#https://leetcode.com/problems/fraction-to-recurring-decimal/
-def fractionToDecimal(numerator: int, denominator: int) -> str:
-    sign = ""
-    if numerator * denominator < 0:
-        numerator,denominator = abs(numerator),abs(denominator)
-        sign = "-"
+from collections import defaultdict
+from collections import Counter
+import copy
+import numpy as np
+def originalDigits(s: str) -> str:
+    numbers = {"zero":0,"one":1,"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9}
+    letter_to_number = defaultdict(list)
+    for key in numbers.keys():
+        for l in key:
+            letter_to_number[l].append(key)
 
-    mod_to_idx = dict()
-    mod = numerator % denominator
-    digit = int(numerator / denominator)
-    isDecimal = False
-    result = ""
-    cur_idx,decimal_idx= None,None
+    counter = Counter(s)
+    # order = [[len(letter_to_number[i]),i] for i in counter.keys()]  ##[number of numbers that letter can represent,letter]
+    # order = sorted(order)
+    candi_set =set()
+    for letter in counter.keys(): ##candidates of this string
+        for num in letter_to_number[letter]:
+            isCandi = True
+            for e in num:
+                if e not in counter:
+                    isCandi = False
+                    break
+            if isCandi:
+                candi_set.add(num)
 
-    while(mod not in mod_to_idx and mod != 0):
-        if not isDecimal:
-            result += str(digit) + "."
-            cur_idx,decimal_idx = len(result)-1,len(result)-1
-            isDecimal = True
-            mod_to_idx[mod] = -1
-        else:
-            result += str(digit)
-            mod_to_idx[mod] = cur_idx
-        digit = int((mod*10) / denominator)
-        mod = (mod * 10) % denominator
+    def search(counter):
+        if not counter: return []
 
-        cur_idx +=1
+        for key in counter:
+            copy_counter = copy.deepcopy(counter)
+            for candi in letter_to_number[key]:
+                if candi in candi_set:
+                    iscandi = True
+                    for j in candi:
+                        if j not in counter:
+                            iscandi = False
+                            break
+                if iscandi:
+                    for letter in candi:
+                        copy_counter[letter] -=1
+                        if copy_counter[letter] == 0:
+                            copy_counter.pop(letter)
 
-    result += str(digit)
-    if mod!=0:
-        index = mod_to_idx[mod]
-        if index== -1:
-            result = result[:decimal_idx+1] + "(" + result[decimal_idx+1:] + ")"
-        else:
-            result = result[:index+1] + "(" + result[index+1:] + ")"
-        return sign + result
+                    re = search(copy_counter)
+                    if re != False:
+                        return [candi] + re
 
-    return sign + result
+        return False
+
+    final = search(counter)
+    return "".join(sorted([str(numbers[i]) for i in final]))
+
+
+s = "fviefuroowoztneoer"
+originalDigits(string)
+
+
+
+numbers = {"zero":0,"one":1,"two":2,"three":3,"four":4,"five":5,"six":6,"seven":7,"eight":8,"nine":9}
+test = {str(value):key for key,value in numbers.items()}
+longnumber = "42342342342354739574982340928382173864726373462000003423948023984234234"
+string = ""
+for i in longnumber:
+    string += test[i]
+
+
+
+
+
+
 
 
 
