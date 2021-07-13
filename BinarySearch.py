@@ -7,7 +7,10 @@ a.insert(1,2.6)
 
 
 from bisect import bisect_right
-a = [1,2,3,4,5]
+a = [[10,20]]
+bisect_right(a,[20,30])
+
+
 
 #https://leetcode.com/problems/binary-search/
 class Solution:
