@@ -5,7 +5,7 @@ from collections import deque
 3. then count left b, add bcbcbcbcbc...    number of bc equals number of left "b"
 4. now, there is only "c" left 
 5. insert c into current result abcabcabcabcbcbcbcbc, iterate from idx =0 to the end of this string, we 
-need to evaluate  if [idx-2,idx-1,c] === ccc, and [c,idx,idx+1] === ccc and [idx-1,c,idx] === c, if not, we could insert 
+need to evaluate  if {{ [idx-2,idx-1,c] === ccc, and [c,idx,idx+1] === ccc and [idx-1,c,idx] === c, }} if not, we could insert 
 this c into current index, and then index +=1
 """
 class Solution:
