@@ -6,3 +6,9 @@
 ##6. https://leetcode.com/problems/basic-calculator-ii/
 ##7. https://leetcode.com/problems/basic-calculator-iii/
 ##8. https://leetcode.com/problems/evaluate-reverse-polish-notation/
+
+"""
+queue application:
+#https://leetcode.com/problems/longest-repeating-character-replacement/
+
+"""

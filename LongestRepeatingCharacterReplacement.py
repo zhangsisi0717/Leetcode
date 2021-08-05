@@ -1,5 +1,6 @@
 from collections import defaultdict
 from collections import deque
+##https://leetcode.com/problems/longest-repeating-character-replacement/
 """
 s="AABABBA"
 
