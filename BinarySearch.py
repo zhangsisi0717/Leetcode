@@ -17,7 +17,7 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
         lb,ub = 0,len(nums)-1
         if target > nums[-1] or target < nums[0]:return -1
-        while(lb<=ub):
+        while(lb<ub):
             mid = (ub+lb) // 2
             if nums[mid] == target:
                 return mid
