@@ -9,27 +9,29 @@ create a maximum heap(with length of at most k), then after iterations, heap[0] 
 
 """
 import heapq
-class Solution:
-    def kthFactor(self, n: int, k: int) -> int:
-        fac_set = set()
-        heap = []
-        for i in range(1,n+1):
-            if n % i == 0:
-                if i in fac_set:
-                    break
-                if i not in fac_set:
-                    fac_set.add(i)
-                    if len(heap)<k:
-                        heapq.heappush(heap,i*(-1))
-                    elif len(heap)>=k and i*(-1) > heap[0]:
-                        heapq.heapreplace(heap,i*(-1))
+def kthFactor(n: int, k: int) -> int:
+    fac_set = set()
+    heap = []
+    for i in range(1,n+1):
+        print(i)
+        if n % i == 0:
+            if i in fac_set:
+                break
+            if i not in fac_set:
+                fac_set.add(i)
+                if len(heap)<k:
+                    heapq.heappush(heap,i*(-1))
+                elif len(heap)>=k and i*(-1) > heap[0]:
+                    heapq.heapreplace(heap,i*(-1))
 
-                if (n // i) not in fac_set:
-                    fac_set.add(n//i)
-                    if len(heap)<k:
-                        heapq.heappush(heap,(n//i)*(-1))
-                    elif len(heap)>=k and (n//i)*(-1) > heap[0]:
-                        heapq.heapreplace(heap,(n//i)*(-1))
-        return heap[0]*(-1) if len(heap)>=k else -1
+            if (n // i) not in fac_set:
+                fac_set.add(n//i)
+                if len(heap)<k:
+                    heapq.heappush(heap,(n//i)*(-1))
+                elif len(heap)>=k and (n//i)*(-1) > heap[0]:
+                    heapq.heapreplace(heap,(n//i)*(-1))
+    return heap[0]*(-1) if len(heap)>=k else -1
 
-
+n = 2000
+k = 100
+kthFactor(n,k)
