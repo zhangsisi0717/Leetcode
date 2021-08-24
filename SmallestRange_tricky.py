@@ -1,3 +1,4 @@
+#https://leetcode.com/problems/smallest-range-i/
 #https://leetcode.com/problems/smallest-range-ii/
 """
 explainations: for a sorted array [a1,a2,a3....aN], to get minimal difference,
