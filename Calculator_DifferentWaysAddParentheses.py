@@ -21,23 +21,48 @@ is    -
     
 Note: if there is no operator in the substring, then return int(string) directly
 """
-class Solution:
-    def diffWaysToCompute(self, expression: str) -> List[int]:
-        operator = {"+":lambda x,y:x+y,"-":lambda x,y:x-y,"*":lambda x,y:x*y,"/":lambda x,y:x/y}
-        def calculate(substring):
-            result=[]
-            found_operator = False
-            for idx in range(len(substring)):
-                if substring[idx] in ("+-*/"):
-                    found_operator=True
-                    left = calculate(substring[:idx])
-                    right = calculate(substring[idx+1:])
-                    sub_re = [operator[substring[idx]](x,y) for x in left for y in right]
-                    result += sub_re
+def diffWaysToCompute(expression: str) -> List[int]:
+    operator = {"+":lambda x,y:x+y,"-":lambda x,y:x-y,"*":lambda x,y:x*y,"/":lambda x,y:x/y}
+    def calculate(substring):
+        result=[]
+        found_operator = False
+        for idx in range(len(substring)):
+            if substring[idx] in ("+-*/"):
+                found_operator=True
+                left = calculate(substring[:idx])
+                right = calculate(substring[idx+1:])
+                sub_re = [operator[substring[idx]](x,y) for x in left for y in right]
+                result += sub_re
 
-            return result if found_operator else [int(substring)]
+        return result if found_operator else [int(substring)]
 
-        return calculate(expression)
+    return calculate(expression)
+
+def addParenthesis(expression: str) -> List[int]:
+    def calculate(substring):
+        result=[]
+        found_operator = False
+        for idx in range(len(substring)):
+            if substring[idx] in ("+-*/"):
+                found_operator=True
+                left = calculate(substring[:idx])
+                right = calculate(substring[idx+1:])
+                sub_re = []
+                for x in left:
+                    for y in right:
+                        l = x if len(x) == 1 else "("+ x + ")"
+                        r = y if len(y) == 1 else "("+ y + ")"
+                        sub_re.append(l + substring[idx] + r)
+                # sub_re = ["("+ x + ")" + substring[idx] + "(" + y + ")" for x in left for y in right]
+                result += sub_re
+
+        return result if found_operator else [substring]
+    return calculate(expression)
+
+expression = "2*3-4*5"
+addParenthesis(expression)
+
+
 
 
 
