@@ -3,9 +3,9 @@ from typing import List
 """
 use recursion to solve this problem
 ##[3,10,19,9,6]
+iterate from index 0 to the end, in order to make next step valid, we either decrease prev_number(i) or next_number(i+1)
 def numOfMoves(prev,isIncrease,index) return number of moves needs to change given "prev number",
  "next number nums[index]", "if next step is increase or decrease"
- 
     if (next step == increase and nums[index]> prev)  => return numOfMoves(nums[index],decrease, index+1)
     if (next step == decrease and nums[index]< prev)  => return numOfMoves(nums[index],increase, index+1)
     
