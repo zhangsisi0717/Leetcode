@@ -30,7 +30,7 @@ step 1: recursively read BST as approach 1 , use x,y,prev to find swapped two el
             prev = node  ##update prev = node
             findSwap(node.right)  ##read node.right
 """
-def recoverTree(self, root: Optional[TreeNode]) -> None:
+def recoverTree(root: Optional[TreeNode]) -> None:
     def inorderTraversal(node):
         if not node:
             return []
