@@ -1,11 +1,11 @@
 ##https://leetcode.com/problems/01-matrix/submissions/
 from collections import deque
+from typing import List
 """
 push all the "0s" to queue (because we know distance of "0"==0), and append all the neighbors of elements in queue one by one and update
 the distance gradually, until the queue is empty
 
 """
-class Solution:
 def updateMatrix(mat: List[List[int]]) -> List[List[int]]:
     delta = [(1, 0), (-1, 0), (0, 1), (0, -1)]
     m = len(mat)
