@@ -1,4 +1,4 @@
-##https://leetcode.com/problems/pour-water/submissions/
+##https://leetcode.com/problems/pour-water/
 class Solution:
     """
     step 1: create two stacks for both "move right", "move left" , only push "first strictly decreasing block" into the stack (eg. if [4,3,3,2,2,2,1,1] then start from "4", we only push first 3, first 2 and first 1)

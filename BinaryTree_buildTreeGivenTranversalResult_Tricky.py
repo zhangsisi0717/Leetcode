@@ -1,5 +1,6 @@
 from typing import List
 """
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 given tranversal result of preoder and inorder lists, rebuild this binary tree
 
 pre-order:  [root],[left],[right]
