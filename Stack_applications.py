@@ -8,6 +8,7 @@
 ##8. https://leetcode.com/problems/evaluate-reverse-polish-notation/
 ##9.https://leetcode.com/problems/pour-water/
 ##10.https://leetcode.com/problems/score-of-parentheses/
+## 11. https://leetcode.com/problems/remove-k-digits/
 
 """
 queue application:
