@@ -9,6 +9,7 @@
 ##9.https://leetcode.com/problems/pour-water/
 ##10.https://leetcode.com/problems/score-of-parentheses/
 ## 11. https://leetcode.com/problems/remove-k-digits/
+## 12. https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
 
 """
 queue application:
