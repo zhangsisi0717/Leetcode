@@ -1,5 +1,5 @@
 import random
-import heapq
+import heapq ##this package implements min_heap
 heapq.heapify(l)
 heapq.heappop(l)
 heapq.heappush(l, 7)

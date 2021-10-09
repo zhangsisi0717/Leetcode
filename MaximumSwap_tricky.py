@@ -9,7 +9,7 @@ iterate the num, if cur_digit < cur_max_number, then we just switch cur_digit an
                 if cur_digit == cur_max_number, then we check if cur_digit is the last index, if not, we continue, 
                                 if cur_digit is already the last index of the cur_max_number, we then make next_largest_number the cur_max_number  
 """
-def maximumSwap(self, num: int) -> int:
+def maximumSwap(num: int) -> int:
     str_num = [i for i in str(num)]
     num_to_lastIdx = dict()
     for idx,e in enumerate(str_num):

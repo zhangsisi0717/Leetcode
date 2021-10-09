@@ -20,7 +20,7 @@ def quickSort(array):
     return l+r
 
 """
-time complexity: nlgK
+time complexity: complicated, has sysmetric structure where f(k) == f(n-k), and argmax => k==n//2
 """
 def kthSmallestQuickSort(k,array):
     pivot = array[random.randint(0,len(array)-1)]

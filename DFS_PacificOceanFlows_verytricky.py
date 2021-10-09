@@ -14,7 +14,7 @@ def pacificAtlantic(heights):
                 if heights[i][j] >= heights[r][c] and not called[i][j]:
                     label(i, j, to, called)
     """
-    DFS starting from block that can definitely flow to both pacific and atlantic, and if the height of its neigbors are
+    Two dfs to Separetely label if a block can flow to pacific and atlantic ocean, DFS starting from block that can definitely flow to pacific/atlantic, and if the height of its neigbors are
     larger than this block, then label it as "True" and label it as "called"
     """
     for r in range(n_row):
