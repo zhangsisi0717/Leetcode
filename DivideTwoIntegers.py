@@ -1,5 +1,4 @@
-from type_checking import *
-def divide(self, dividend: int, divisor: int) -> int: ##https://leetcode.com/problems/divide-two-integers/
+def divide(dividend: int, divisor: int) -> int: ##https://leetcode.com/problems/divide-two-integers/
 
     if dividend < 0 and divisor > 0:
         sign = -1
