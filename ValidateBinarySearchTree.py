@@ -7,7 +7,7 @@
 
 import math
 class Solution: #https://leetcode.com/problems/validate-binary-search-tree/
-    def isValidBST(self, root: TreeNode) -> bool:
+    def isValidBST(root: TreeNode) -> bool:
 
         def subIsValid(root):
             if not root.left and not root.right:
