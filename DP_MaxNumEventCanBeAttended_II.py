@@ -1,5 +1,4 @@
 ##https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended-ii/
-from typing import List
 from bisect import bisect_left
 from functools import cache
 """
