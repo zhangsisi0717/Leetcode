@@ -15,5 +15,3 @@ def minRemoveToMakeValid(self, s: str) -> str: ##https://leetcode.com/problems/m
     re=""
     invalid_set = set(invalidleft).union(set(invalideright))
     return "".join([s[idx] for idx in range(len(s)) if idx not in invalid_set])
-
-import heapq
