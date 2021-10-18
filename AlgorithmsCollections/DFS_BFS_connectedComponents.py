@@ -1,5 +1,8 @@
 import typing
 """
+dfs: need to keep track of "visited"
+"""
+"""
 question 1:  find the shortest bridge to connect two connected-components
 ##https://leetcode.com/problems/shortest-bridge/
 
