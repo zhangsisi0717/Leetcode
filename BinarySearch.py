@@ -11,7 +11,6 @@ bisect_right(a,[20,30])
 
 
 l = [1,2,2,2,3,4,5,6]
-from typing import List
 def bisectRight(lb,ub,num,l):
     """
     bisectRight is just the regular binary search
