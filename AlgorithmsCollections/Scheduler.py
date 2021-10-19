@@ -14,4 +14,10 @@ startTime = [1,2,3,3], endTime = [3,4,5,6], profit = [50,10,40,70]
 give startTime, endTime, and profit of each task
 return Maximum profit we can get (tasks should have overlap)
 
+solution(DP):
+step 1: sort the list by startTime
+step 2: maxProfit(i): max profit we can get starting considering from index i
+    maxProfit(i) = max( profit[i] + maxProfit(j) , maxProfit(i+1) )
+                       (j is the smallest index after index i that is not overlapped with task i)
+
 """

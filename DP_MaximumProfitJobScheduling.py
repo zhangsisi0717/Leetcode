@@ -4,7 +4,7 @@ step 1: sort the list by startTime
 step 2: maxProfit(i): max profit we can get starting considering from index i
     maxProfit(i) = max( profit[i] + maxProfit(j) , maxProfit(i+1) )
                        (j is the smallest index after index i that is not overlapped with task i)
-                       
+timeComplexity O(n2)                 
 """
 class Solution:
     def jobScheduling(self, startTime: List[int], endTime: List[int], profit: List[int]) -> int:
@@ -21,7 +21,7 @@ class Solution:
 
             include, not_include = tasks[index][2],0
             if tasks[index+1][0] < tasks[index][1]: #there is overlap
-                for i in range(index+2, len(profit)):
+                for i in range(index+2, len(profit)): ##this step is O(n)
                     if tasks[i][0] >= tasks[index][1]: # no overlap
                         include += maxProfit(i)
                         break
