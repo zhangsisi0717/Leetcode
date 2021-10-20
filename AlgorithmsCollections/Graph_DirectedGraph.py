@@ -79,3 +79,35 @@ def findOrder(numCourses: int, prerequisites: List[List[int]]) -> List[int]:
 """
 topological sort (DFS) 
 """
+def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+    descendants = [[] for _ in range(numCourses)]
+    for course, prereq in prerequisites:
+        descendants[course].append(prereq)
+
+    orderList = []
+    def visit(visited, recursion_stack, cur_node):
+        nonlocal orderList
+        if visited[cur_node]:
+            return True
+
+        if cur_node in recursion_stack:
+            return False
+
+        recursion_stack.add(cur_node)  ###mark cur_node as a temporary mark
+
+        for des in descendants[cur_node]:
+            if not visit(visited, recursion_stack, des):
+                return False
+
+        recursion_stack.remove(cur_node)  ###remove temporary mark
+        visited[cur_node] = True
+        orderList.append(cur_node)
+        return orderList
+
+    visited = [False for _ in range(numCourses)]
+    for idx in range(numCourses):
+        if not visited[idx]:
+            if not visit(visited, set(), idx):
+                return []
+    return orderList
+
