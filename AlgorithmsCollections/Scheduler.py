@@ -21,3 +21,9 @@ step 2: maxProfit(i): max profit we can get starting considering from index i
                        (j is the smallest index after index i that is not overlapped with task i)
 
 """
+
+"""
+3.https://leetcode.com/problems/course-schedule/
+Given a list of prerequisites of courses, determine if a student can finish all the courses
+solution: directed graph, if there is a cycle, then can not finish all the courses 
+"""
