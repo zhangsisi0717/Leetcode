@@ -27,3 +27,8 @@ step 2: maxProfit(i): max profit we can get starting considering from index i
 Given a list of prerequisites of courses, determine if a student can finish all the courses
 solution: directed graph, if there is a cycle, then can not finish all the courses 
 """
+
+"""
+Given a list of prerequisites of courses, output all the courses in correct order
+solution: topological sort(BFS)
+"""
