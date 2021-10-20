@@ -13,6 +13,8 @@ use dfs : keep track of cur_vertex, visited, recursion stack, if cur_vertex alre
 ifhascycle(cur_vertex, visited, recursion_stack): return if could detect a cycle starting dfs from "cur_vertex"
 peudo-code as follows:
 """
+numOfVertices = 10
+graph = {i:[] for i in range(numOfVertices)}
 def ifhascycle(cur_vertex, visited, recursion_stack):
     if cur_vertex not in recursion_stack and not visited[cur_vertex]:
         recursion_stack.add(cur_vertex)
@@ -28,9 +30,10 @@ def ifhascycle(cur_vertex, visited, recursion_stack):
     visited[cur_vertex] = True
     return False
 
-recursion_stack = set()
-visited = [False for _ in range(numOfVertices)]
-for idx in range(numOfVertices):
-    if not visited[idx] and ifhascycle(idx, visited, recursion_stack):
-        return False
-return True
+def graphHasCycle(graph):
+    recursion_stack = set()
+    visited = [False for _ in range(numOfVertices)]
+    for idx in range(numOfVertices):
+        if not visited[idx] and ifhascycle(idx, visited, recursion_stack):
+            return False
+    return True
