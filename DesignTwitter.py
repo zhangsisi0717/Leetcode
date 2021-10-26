@@ -1,4 +1,3 @@
-from typing import List
 from collections import defaultdict
 import heapq
 class Twitter:
