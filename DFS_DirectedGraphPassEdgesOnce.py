@@ -1,5 +1,4 @@
 ##https://leetcode.com/problems/reconstruct-itinerary/
-from type_checking import *
 import copy
 """
 Eulerian path
