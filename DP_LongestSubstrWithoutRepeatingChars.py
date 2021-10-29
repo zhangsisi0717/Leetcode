@@ -1,5 +1,5 @@
 #https://leetcode.com/problems/longest-substring-without-repeating-characters/
-from type_checking import *
+from typing import List
 def lengthOfLongestSubstring(s: str) -> int:
     letter_to_idx = dict()
     longest = 0
