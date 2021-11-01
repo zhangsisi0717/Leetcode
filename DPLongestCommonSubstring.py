@@ -1,4 +1,4 @@
-from typing import List
+from type_checking import *
 ##https://leetcode.com/problems/maximum-length-of-repeated-subarray/
 """
 find longest common substring: set i,j as suffix of nums2 and nums1
