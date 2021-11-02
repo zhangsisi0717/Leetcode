@@ -1,4 +1,5 @@
 #https://leetcode.com/problems/tweet-counts-per-frequency/
+from type_checking import *
 from collections import defaultdict
 class TweetCounts:
 
