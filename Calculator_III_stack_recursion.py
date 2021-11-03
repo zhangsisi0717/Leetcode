@@ -1,4 +1,5 @@
 ##https://leetcode.com/problems/basic-calculator-iii/
+##https://leetcode.com/problems/basic-calculator/
 from type_checking import *
 
 from collections import deque
@@ -54,7 +55,8 @@ def calculate_stack(s: str) -> int:
                 temp_num += s[idx]
 
             elif s[idx] in "+-*/":
-                operate(stack,presign,int(temp_num))
+                if temp_num: ##for case "-2 + 1"
+                    operate(stack,presign,int(temp_num))
                 temp_num = ""
                 presign = s[idx]
 
