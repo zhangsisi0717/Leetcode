@@ -1,4 +1,4 @@
-import typing
+from typing import *
 """
 1. https://leetcode.com/problems/course-schedule-iii/
 courses = [[100,200],[200,1300],[1000,1250],[2000,3200]]
