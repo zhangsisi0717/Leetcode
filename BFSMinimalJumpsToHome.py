@@ -1,4 +1,4 @@
-from type_checking import *
+from typing import List
 class MinimalJumpsToHome: #https://leetcode.com/problems/minimum-jumps-to-reach-home/
     def minimumJumps(self, forbidden: List[int], a: int, b: int, x: int) -> int:
         from collections import deque
