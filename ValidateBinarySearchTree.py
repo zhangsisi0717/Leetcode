@@ -6,6 +6,7 @@
 #         self.right = right
 
 import math
+from typing import *
 class Solution: #https://leetcode.com/problems/validate-binary-search-tree/
     def isValidBST(root: TreeNode) -> bool:
 
