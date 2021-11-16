@@ -1,6 +1,6 @@
 ##https://leetcode.com/problems/coin-change-2/
 """
-sum(amount,k) returns the number of unique combinations if only considering first "K" elements, with sum to amount
+sum(amount,k) returns the number of unique combinations if only considering first "K" elements, with sum to amountx`x``
 
 sum(amount,k) = summmation of (sum(amount - i*coins[k], k-1) , i from 0 to amount//coins[k]
 """
