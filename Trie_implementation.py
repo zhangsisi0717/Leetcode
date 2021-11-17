@@ -1,3 +1,4 @@
+from type_checking import *
 class Trie:
 
     def __init__(self):
