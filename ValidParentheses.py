@@ -1,5 +1,5 @@
-def minRemoveToMakeValid(self, s: str) -> str: ##https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/submissions/
-    from collections import deque
+from collections import deque
+def minRemoveToMakeValid(s: str) -> str: ##https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/submissions/
     invalidleft=deque()
     invalideright=deque()
     for i in range(len(s)):
