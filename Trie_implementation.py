@@ -1,4 +1,4 @@
-from type_checking import *
+from typing import List
 class Trie:
 
     def __init__(self):
