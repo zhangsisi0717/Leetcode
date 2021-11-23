@@ -3,50 +3,40 @@ from typing import *
 """
 approach 1: space complexity O(n), time complexity O(n)
 
-step 1 : inorder tranverse the BST, return all the elements into one list
-step 2 :  [1,5,3,4,2,6], 2 and 5 were swapped, x,y = None, iterate from i = 0 to len(list)-1,
-        if cur[i+1].val < cur[i].val:
-            y = cur[i+1]
-            if x is None:
-                x = cur[i]
-            else:
-                found x and y, just break
-                
-step 3: swap x and y
+if a list [1,2,3,4,5,6] =>swap 2 and 5 => [1,5,3,4,2,6]
+                                             ↑ ↑   ↑
+                                             x y   y(updated)
+x,y, prev = None,None,None
+iterate idx from 0 to end,
+    if prev is none, then prev=l[idx]
+ once we found "prev" > l[idx], x is None and y is None,  ( then it is the first time decrease )， 
+ x=l[idx-1], y = l[idx], prev=l[idx], no matter which two numbers are swapped, the x will not change, then we keep updating the prev=l[idx], 
+ if we found decrease again  (prev>l[idx]), we update y=l[idx]... eventually x and y are the swapped number
+ 
+ -------------------------------
+ Apply the same logic to binary search tree, all we need is nonlocal x,y,prev = None,None,None
+ 
 """
-"""
-approach 2: space complexity O(1), time complexity O(1)
-step 1: recursively read BST as approach 1 , use x,y,prev to find swapped two elements
-        def findSwap(node):
-            nonlocal x,y,prev
-            if not node:
-                return 
-            
-            findSwap(node.left)  ##tranver node.left and update x,y,prev
-            if prev and prev.val > node.val:
-                y = node
-                if not x:
-                    x = prev
-            prev = node  ##update prev = node
-            findSwap(node.right)  ##read node.right
-"""
-def recoverTree(root: Optional[TreeNode]) -> None:
-    def inorderTraversal(node):
-        if not node:
-            return []
+def recoverTree(self, root: Optional[TreeNode]) -> None:
+    """
+    Do not return anything, modify root in-place instead.
+    """
+    x,y, prev = None, None, None
+    def traversal(node):
+        nonlocal x,y,prev
+        if not node: ##if node is none, return
+            return
 
-        l = inorderTraversal(node.left)
-        r = inorderTraversal(node.right)
-        return l + [node] + r
+        traversal(node.left) ## traverse left subtree and update x,y,prev
 
-    cur = inorderTraversal(root)
-    print([i.val for i in cur])
-    x,y = None,None
-    for i in range(len(cur)-1):
-        if cur[i+1].val < cur[i].val:
-            y = cur[i+1]
+        ##line 32-36 is how we actually update the x,y,prev
+        if prev and prev.val > node.val: ##if prev is not None and prev_val > node.val
             if not x:
-                x = cur[i]
-            else:
-                break
-    y.val,x.val = x.val,y.val
+                x = prev
+            y = node
+
+        prev = node ##always update prev = node
+        traversal(node.right)
+
+    traversal(root)
+    x.val, y.val = y.val, x.val
