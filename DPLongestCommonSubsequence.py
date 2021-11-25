@@ -1,5 +1,7 @@
 
 """
+#https://leetcode.com/problems/longest-common-subsequence/
+
 https://www.techiedelight.com/longest-common-subsequence/
     if end with the same element:
         LCS(A[1,2..m],B[1,2,3...n]) = LCS(A[1,2,3...m-1],B[1,2,3...n-1]) + A[m]/B[n]
@@ -12,76 +14,34 @@ https://www.techiedelight.com/longest-common-subsequence/
         lcs(i,j) = max (lcs(i-1,j), lcs(i, j-1) )  (i,j is the surffix)
 
 """
-def longestCommonSubsequence(stringA,stringB):
-    visited = dict() ##memoization
-    def LCS2(stringA,stringB,idxA,idxB,visited): ####recursion
-        if(idxA,idxB) in visited:
-            return visited[(idxA,idxB)]
-        if idxA==-1 or idxB ==-1:
-            return 0,[None]
+from functools import cache
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:  ##of only need to return the length
+        @cache
+        def lss(i,j):
+            if i < 0 or j<0:
+                return 0
+            if text1[i] == text2[j]:
+                return lss(i-1,j-1) + 1
 
-        if stringA[idxA] == stringB[idxB]:
-            re = LCS2(stringA,stringB,idxA-1,idxB-1,visited)
-            if re[0]:
-                visited[(idxA,idxB)] =(re[0]+1,[i+stringA[idxA] for i in re[1]])
-            else:
-                visited[(idxA,idxB)] = (1,[stringA[idxA]])
-            return visited[(idxA,idxB)]
+            return max(lss(i-1,j), lss(i,j-1))
 
-        re1 = LCS2(stringA,stringB,idxA-1,idxB,visited)
-        re2 = LCS2(stringA,stringB,idxA,idxB-1,visited)
-        if re1[0]>re2[0]:
-            visited[(idxA,idxB)] = re1
+        return lss(len(text1)-1,len(text2)-1)
 
-        elif re1[0]==re2[0] and re1[1]!= re2[1]:
-            visited[(idxA,idxB)] = (re1[0],re1[1]+re2[1])
+def longestCommonSubsequenceWithOutputString(self, text1: str, text2: str) -> int:  ###if want to return the common substring
+    @cache
+    def lss(i,j):
+        if i < 0 or j<0:
+            return ()
+        if text1[i] == text2[j]:
+            re = list(lss(i-1,j-1))
+            re.append(text1[i])
+            return tuple(re)
 
-        else:
-            visited[(idxA,idxB)] =  re2
-        return visited[(idxA,idxB)]
-    return LCS2(stringA,stringB,len(stringA)-1,len(stringB)-1,visited)
+        re1 = lss(i-1,j)
+        re2 = lss(i,j-1)
 
-testS1 = "BECFDG"
-testS2 = "BCDEFG"
-longestCommonSubsequence(testS1,testS2)
+        return re1 if len(re1)>len(re2) else re2
 
 
-def LCSBottomUp(stringA,stringB):
-    table=[[0 for i in range(len(stringA)+1)]for j in range(len(stringB)+1)]
-    largest=0
-    for i in range(1,len(stringB)+1):
-        for j in range(1,len(stringA)+1):
-            if stringB[i-1] == stringA[j-1]:
-                table[i][j] = table[i-1][j-1]+1
-                if table[i][j] > largest:
-                    largest = table[i][j]
-            else:
-                table[i][j] = max(table[i-1][j],table[i][j-1])
-
-    def readsubsequence(table, stringA, stringB, col, row):
-        if col ==0 or row ==0:
-            return [str()]
-
-        if stringA[col - 1] == stringB[row - 1]:
-            re =  readsubsequence(table, stringA, stringB, col - 1, row - 1)
-            return [i + stringA[col - 1] for i in re]
-        if table[row][col-1]> table[row-1][col]:
-            return readsubsequence(table, stringA, stringB, col - 1, row)
-        elif table[row][col-1]< table[row-1][col]:
-            return readsubsequence(table, stringA, stringB, col, row - 1)
-        else:
-            return readsubsequence(table, stringA, stringB, col - 1, row) + readsubsequence(table, stringA, stringB, col, row - 1)
-
-    return largest,readsubsequence(table,stringA,stringB,len(stringA),len(stringB))
-
-
-
-stringA = "ABCBDAB"
-stringB = "BDCABA"
-
-X = "XMJYAUZ"
-Y = "XMJAATZ"
-LCSBottomUp(stringA,stringB)
-
-
-longestCommonSubsequence(X,Y)
+    return lss(len(text1)-1,len(text2)-1)
