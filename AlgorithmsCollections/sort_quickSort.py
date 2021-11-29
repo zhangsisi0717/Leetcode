@@ -22,7 +22,7 @@ def quickSort(array):
 """
 time complexity: complicated, has sysmetric structure where f(k) == f(n-k), and argmax => k==n//2
 """
-def kthSmallestQuickSort(k,array):
+def kthSmallestQuickSelect(k,array):
     pivot = array[random.randint(0,len(array)-1)]
     l,r = [],[]
     for i in array:
@@ -34,10 +34,10 @@ def kthSmallestQuickSort(k,array):
         return pivot
 
     elif len(l)< k:
-        return kthSmallestQuickSort(k-len(l),r)
+        return kthSmallestQuickSelect(k-len(l),r)
 
     else:
-        return kthSmallestQuickSort(k,l)
+        return kthSmallestQuickSelect(k,l)
 
 
 

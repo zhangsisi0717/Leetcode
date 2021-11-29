@@ -36,3 +36,11 @@ class Solution:
 
         return s[pre: sur+1]
 
+
+"""
+Valid Palindrome II 
+#https://leetcode.com/problems/valid-palindrome-ii/
+if the s can be palindrome after deleting at most one character from it??
+
+"""
+
