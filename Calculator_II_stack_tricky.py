@@ -21,37 +21,41 @@ def calculate_stack(s: str) -> int:
     "DO NOT FORGET TO ADD A "+" TO END OF THE STRING IN THE FIRST PLACE, in order to calculate the last number"
     eventually sum the stack
     """
-    s = s+"+"
-    operator = {"*":lambda x,y:x*y,"/":lambda x,y: int(x/y)}
-    pre_sign = "+"
-    idx=0
-    stack=deque([])
-    cur_num = ""
-    while(idx<len(s)):
-        if s[idx] == " ":
+    def calculate(self, s: str) -> int:
+        s = s+"+"
+        pre_sign = "+"
+        idx=0
+        stack=[]
+        cur_num = ""
+        while(idx<len(s)):
+            if s[idx] == " ":
+                idx +=1
+                continue
+
+            if s[idx].isnumeric():
+                cur_num += s[idx]
+
+            else:
+                self.operate(pre_sign, stack, int(cur_num))
+                pre_sign = s[idx]
+                cur_num=""
+
             idx +=1
-            continue
 
-        if s[idx].isnumeric():
-            cur_num += s[idx]
+        return sum(stack)
 
-        else:
-            if pre_sign=="+":
-                stack.append(int(cur_num))
-            elif pre_sign=="-":
-                stack.append((-1)*int(cur_num))
+def operate(self, presign,stack,num):
+    if presign == "+":
+        stack.append(num)
 
-            elif pre_sign in ("*/"):
-                x = stack.pop()
-                stack.append(operator[pre_sign](x, int(cur_num)))
+    elif presign == "-":
+        stack.append(-num)
 
-            pre_sign = s[idx]
-            cur_num=""
+    elif presign == "*":
+        stack.append(stack.pop()*num)
 
-        idx +=1
-
-    return sum(stack)
-
+    elif presign == "/":
+        stack.append(int(stack.pop()/num))
 s= "3+2*2/4+7*9/2-6*5*5/4"
 calculate_stack(s)
 

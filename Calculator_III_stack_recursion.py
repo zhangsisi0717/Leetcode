@@ -57,8 +57,8 @@ def calculate_stack(s: str) -> int:
             elif s[idx] in "+-*/":
                 if temp_num: ##for case "-2 + 1"
                     operate(stack,presign,int(temp_num))
-                temp_num = ""
                 presign = s[idx]
+                temp_num = ""
 
             idx +=1
 
