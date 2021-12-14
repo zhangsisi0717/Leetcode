@@ -10,6 +10,7 @@
 ##10.https://leetcode.com/problems/score-of-parentheses/
 ## 11. https://leetcode.com/problems/remove-k-digits/
 ## 12. https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
+##13. https://leetcode.com/problems/employee-free-time/submissions/
 
 """
 queue application:

@@ -12,8 +12,8 @@ class strNum(object):
     def __eq__(self, other):
         return (self.val == other.val)
 
-    def __ne__(self, other):
-        return not (self.val == other.val)
+    # def __ne__(self, other):
+    #     return not (self.val == other.val)
 
     def __lt__(self, other):
         self_other = self.val + other.val
@@ -32,3 +32,5 @@ a=strNum(57389)
 b=strNum(573)
 
 [498, 666, 135, 279, 416, 932, 407, 53, 521, 140, 256, 513, 553, 838, 339,45,35,67,123,56,456,890,1,44,53453,5675,867,3423,234567,786]
+
+sort(key = lambda x: x[0])
