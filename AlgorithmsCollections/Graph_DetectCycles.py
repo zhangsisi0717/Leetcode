@@ -9,6 +9,7 @@ use dfs : keep track of cur_vertex, visited, recursion stack, if cur_vertex alre
 """
 
 """
+Directed Graph, detected if there is a cycle
 ifhascycle(cur_vertex, visited, recursion_stack): return if could detect a cycle starting dfs from "cur_vertex"
 peudo-code as follows:
 """
