@@ -21,6 +21,7 @@ step 2:
 step 3:
     for the current node "A", we then "examine"(not visit) its "UNVISITED NEIGHBORS", and update shortest_distance_from_A_to
     the "UNVISITED NEIGHBORS"
+    distance_from_a_to_"unvisited_node" = min(distance_from_A[unvisited_node], distance_from_A[cur_node]+ edge(cur_node, its unvisited_neighbor))
 
 step 4:
     repeat step 2 and step 3

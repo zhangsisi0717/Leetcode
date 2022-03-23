@@ -1,6 +1,6 @@
 from functools import lru_cache
 """
-Example 0 : exmaple that we'd better use the "TRIE":
+Example 0: exmaple that we'd better use the "TRIE":
 
 https://leetcode.com/problems/longest-word-in-dictionary/
 words = ["a","banana","app","appl","ap","apply","apple"], find longest word in words that can e built one character at 
