@@ -33,7 +33,17 @@ def longestWord(self, words: List[str]) -> str:
     return l_word
 """
 
+"""
+example 1: exmaple that we'd better use the "TRIE":
+##https://leetcode.com/problems/word-search-ii/submissions/
 
+given board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]] and words = ["oath","pea","eat","rain"]
+output all the words in words that can be constructed from board
+
+if we simply do dfs for each word in words on board, we could do a lot repetitive words if the word in words are more like:
+["aaaaaaaaaa","aaaaaaaaab","aaaaaaaaac"]
+so we'd better create a trie based on the words provided
+"""
 
 
 """

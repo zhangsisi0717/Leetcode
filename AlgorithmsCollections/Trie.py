@@ -15,7 +15,7 @@ def buildTrie(words):
 
             cur_dic = cur_dic[e]
 
-        cur_dic["end"] = dict()
+        cur_dic["end"] = w
 
     return trie
 def isInTheTrie(trie,word):
